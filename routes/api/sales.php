@@ -22,6 +22,8 @@ Route::prefix('sales')->namespace('Sales')->group(function () {
     Route::post('delivery-orders/{id}/cancellation-approve', 'DeliveryOrder\\DeliveryOrderCancellationApprovalController@approve');
     Route::post('delivery-orders/{id}/cancellation-reject', 'DeliveryOrder\\DeliveryOrderCancellationApprovalController@reject');
     Route::apiResource('delivery-orders', 'DeliveryOrder\\DeliveryOrderController');
+    Route::put('delivery-notes/{id}/approve', 'DeliveryNote\\DeliveryNoteApprovalController@approve');
+    Route::put('delivery-notes/{id}/reject', 'DeliveryNote\\DeliveryNoteApprovalController@reject');
     Route::post('delivery-notes/send-email', 'DeliveryNote\\DeliveryNoteSendEmailController@store');
     Route::apiResource('delivery-notes', 'DeliveryNote\\DeliveryNoteController');
     Route::get('invoices/last-price/{itemId}', 'SalesInvoice\\SalesInvoicePricingController@lastPrice');
