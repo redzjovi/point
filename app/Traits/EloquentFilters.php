@@ -2,11 +2,14 @@
 
 namespace App\Traits;
 
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Http\Request;
+
 trait EloquentFilters
 {
     /**
-     * @param $query
-     * @param $request
+     * @param Builder $query
+     * @param Request $request
      */
     public function scopeEloquentFilter($query, $request)
     {

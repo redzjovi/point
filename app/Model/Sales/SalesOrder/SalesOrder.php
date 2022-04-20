@@ -9,6 +9,34 @@ use App\Traits\Model\Sales\SalesOrderJoin;
 use App\Traits\Model\Sales\SalesOrderRelation;
 use Carbon\Carbon;
 
+/**
+ * @property int $id
+ * @property null|int $sales_quotation_id
+ * @property null|int $sales_contract_id
+ * @property int $customer_id
+ * @property string $customer_name
+ * @property null|string $customer_address
+ * @property null|string $customer_phone
+ * @property null|string $billing_address
+ * @property null|string $billing_phone
+ * @property null|string $billing_email
+ * @property null|string $shipping_address
+ * @property null|string $shipping_phone
+ * @property null|string $shipping_email
+ * @property null|int $warehouse_id
+ * @property string $eta
+ * @property int $cash_only
+ * @property float $need_down_payment
+ * @property float $delivery_fee
+ * @property float $discount_fee
+ * @property null|float $discount_percent
+ * @property float $discount_value
+ * @property string $type_of_tax
+ * @property float $tax
+ * @property float $amount
+ * @property null|string $created_at
+ * @property null|string $updated_at
+ */
 class SalesOrder extends TransactionModel
 {
     use SalesOrderRelation, SalesOrderJoin;

@@ -5,12 +5,14 @@ namespace Tests;
 use App\Model\Accounting\ChartOfAccount;
 use App\Model\Accounting\ChartOfAccountType;
 use App\Model\Master\Branch;
+use App\Model\Master\User as TenantUser;
 use App\Model\Package;
 use App\Model\Project\Project;
 use App\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
 use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 
 abstract class TestCase extends BaseTestCase
@@ -34,6 +36,11 @@ abstract class TestCase extends BaseTestCase
     // Setting this allows both DB connections to be reset between tests
     protected $connectionsToTransact = ['mysql', 'tenant'];
 
+    /**
+     * @var array
+     */
+    protected $headers;
+    
     /**
      * @var null|User
      */
@@ -59,12 +66,12 @@ abstract class TestCase extends BaseTestCase
             'Timezone' => 'asia/jakarta',
         ];
 
-        \DB::beginTransaction();
+        DB::beginTransaction();
     }
 
     protected function tearDown(): void
     {
-        \DB::rollback();
+        DB::rollback();
 
         $this->logRequestTime();
 
@@ -82,8 +89,7 @@ abstract class TestCase extends BaseTestCase
 
     protected function connectTenantUser()
     {
-        $tenantUser = new \App\Model\Master\User();
-        $tenantUser->id = $this->user->id;
+        $tenantUser = TenantUser::query()->firstOrNew(['id' => $this->user->id]);
         $tenantUser->name = $this->user->name;
         $tenantUser->email = $this->user->email;
         $tenantUser->save();

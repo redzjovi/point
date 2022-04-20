@@ -12,10 +12,40 @@ use App\Model\TransactionModel;
 use App\Traits\Model\Purchase\PurchaseInvoiceJoin;
 use App\Traits\Model\Purchase\PurchaseInvoiceRelation;
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Collection;
 
+/**
+ * @property int $id
+ * @property int $supplier_id
+ * @property string $supplier_name
+ * @property null|string $supplier_address
+ * @property null|string $supplier_phone
+ * @property null|string $invoice_number
+ * @property null|string $billing_address
+ * @property null|string $billing_phone
+ * @property null|string $billing_email
+ * @property null|string $shipping_address
+ * @property null|string $shipping_phone
+ * @property null|string $shipping_email
+ * @property null|string $due_date
+ * @property float $delivery_fee
+ * @property null|float $discount_percent
+ * @property float $delivery_value
+ * @property string $type_of_tax
+ * @property float $tax
+ * @property float $amount
+ * @property float $remaining
+ * 
+ * @property Form $form
+ * @property Collection<PurchaseInvoiceItem> $items
+ */
 class PurchaseInvoice extends TransactionModel
 {
     use PurchaseInvoiceJoin, PurchaseInvoiceRelation;
+
+    const TYPE_OF_TAX_EXCLUDE = 'exclude';
+    const TYPE_OF_TAX_NON = 'non';
+    const TYPE_OF_TAX_INCLUDE = 'include';
 
     public static $morphName = 'PurchaseInvoice';
 

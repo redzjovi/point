@@ -3,12 +3,12 @@
 use App\Model\Master\Branch;
 use App\Model\Master\Warehouse;
 use Faker\Generator as Faker;
+use Illuminate\Database\Eloquent\Factory;
 
-/* @var Illuminate\Database\Eloquent\Factory $factory */
-
+/** @var Factory $factory */
 $factory->define(Warehouse::class, function (Faker $faker) {
     return [
-        'code' => $faker->postcode,
+        'code' => uniqid(),
         'name' => $faker->name,
         'address' => $faker->address,
         'phone' => $faker->e164PhoneNumber,

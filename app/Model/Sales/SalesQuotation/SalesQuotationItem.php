@@ -8,6 +8,19 @@ use App\Model\Sales\SalesOrder\SalesOrderItem;
 use App\Model\TransactionModel;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * @property int $id
+ * @property int $sales_quotation_id
+ * @property int $item_id
+ * @property string $item_name
+ * @property float $quantity
+ * @property string $unit
+ * @property float $converter
+ * @property float $price
+ * @property null|float $discount_percent
+ * @property float $discount_value
+ * @property null|string $notes
+ */
 class SalesQuotationItem extends TransactionModel
 {
     protected $connection = 'tenant';

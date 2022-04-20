@@ -2,8 +2,10 @@
 
 namespace App;
 
+use App\Model\Auth\Role;
 use App\Model\Project\Project;
 use App\Model\Reward\Token;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
@@ -11,6 +13,26 @@ use Spatie\Permission\Traits\HasRoles;
 
 /**
  * @property int $id
+ * @property string $name
+ * @property string $fist_name
+ * @property string $last_name
+ * @property null|string $address
+ * @property null|string $phone
+ * @property string $email
+ * @property string $password
+ * @property null|string $phone_confirmation_code
+ * @property int $phone_confirmed
+ * @property null|string $email_confirmation_code
+ * @property int $email_confirmed
+ * @property null|string $remember_token
+ * @property null|int $created_by
+ * @property null|int $updated_by
+ * @property null|int $archived_by
+ * @property null|string $created_at
+ * @property null|string $updated_at
+ * @property null|string $archived_at
+ *
+ * @property Collection<Role> $roles
  */
 class User extends Authenticatable
 {

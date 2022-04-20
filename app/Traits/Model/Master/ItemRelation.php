@@ -7,6 +7,7 @@ use App\Model\Accounting\Journal;
 use App\Model\Inventory\Inventory;
 use App\Model\Master\ItemGroup;
 use App\Model\Master\ItemUnit;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 trait ItemRelation
 {
@@ -33,6 +34,7 @@ trait ItemRelation
 
     /**
      * Get all of the units for the items.
+     * @return HasMany
      */
     public function units()
     {

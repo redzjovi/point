@@ -6,6 +6,18 @@ use App\Model\MasterModel;
 use App\Traits\Model\Master\ItemUnitJoin;
 use App\Traits\Model\Master\ItemUnitRelation;
 
+/**
+ * @property int $id
+ * @property string $label
+ * @property string $name
+ * @property string $converter
+ * @property int $disabled
+ * @property int $item_id
+ * @property null|int $created_by
+ * @property null|int $updated_by
+ * @property null|int $created_at
+ * @property null|int $updated_at
+ */
 class ItemUnit extends MasterModel
 {
     use ItemUnitRelation, ItemUnitJoin;

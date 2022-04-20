@@ -8,6 +8,27 @@ use App\Model\Purchase\PurchaseReceive\PurchaseReceive;
 use App\Model\Purchase\PurchaseReceive\PurchaseReceiveItem;
 use App\Model\TransactionModel;
 
+/**
+ * @property int $id
+ * @property int $purchase_invoice_id
+ * @property int $purchase_receive_id
+ * @property int $purchase_receive_item_id
+ * @property int $item_id
+ * @property null|string $expiry_date
+ * @property null|string $production_number
+ * @property string $item_name
+ * @property float $quantity
+ * @property float $price
+ * @property null|float $discount_percent
+ * @property float $discount_value
+ * @property int $taxable
+ * @property string $unit
+ * @property float $converter
+ * @property null|string $notes
+ * @property null|int $allocation_id
+ * 
+ * @property PurchaseReceive $purchaseReceive
+ */
 class PurchaseInvoiceItem extends TransactionModel
 {
     protected $connection = 'tenant';

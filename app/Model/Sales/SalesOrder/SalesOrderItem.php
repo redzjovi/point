@@ -9,6 +9,24 @@ use App\Model\PointModel;
 use App\Model\Sales\DeliveryOrder\DeliveryOrder;
 use App\Model\Sales\DeliveryOrder\DeliveryOrderItem;
 
+/**
+ * @property int $id
+ * @property int $sales_order_id
+ * @property null|int $sales_quotation_item_id
+ * @property null|int $sales_contract_item_id
+ * @property null|int $sales_contract_group_item_id
+ * @property int $item_id
+ * @property string $item_name
+ * @property float $quantity
+ * @property string $unit
+ * @property float $converter
+ * @property float $price
+ * @property null|float $discount_percent
+ * @property float $discount_value
+ * @property int $taxable
+ * @property null|string $notes
+ * @property null|int $allocation_id
+ */
 class SalesOrderItem extends PointModel
 {
     protected $connection = 'tenant';

@@ -9,6 +9,31 @@ use App\Model\MasterModel;
 use App\Traits\Model\Master\CustomerJoin;
 use App\Traits\Model\Master\CustomerRelation;
 
+/**
+ * @property int $id
+ * @property null|string $code
+ * @property null|string $tax_identification_number
+ * @property string $name
+ * @property null|string $address
+ * @property null|string $city
+ * @property null|string $state
+ * @property null|string $country
+ * @property null|string $zip_code
+ * @property null|float $latitude
+ * @property null|float $longitude
+ * @property null|string $phone
+ * @property null|string $phone_cc
+ * @property null|string $email
+ * @property null|string $notes
+ * @property float $credit_limit
+ * @property null|int $branch_id
+ * @property null|int $created_by
+ * @property null|int $updated_by
+ * @property null|int $archived_by
+ * @property null|string $created_at
+ * @property null|string $updated_at
+ * @property null|string $archived_at
+ */
 class Customer extends MasterModel
 {
     use CustomerJoin, CustomerRelation;

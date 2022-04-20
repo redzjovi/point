@@ -2,16 +2,43 @@
 
 namespace App\Model\Sales\DeliveryNote;
 
+use App\Exceptions\IsReferencedException;
 use App\Helpers\Inventory\InventoryHelper;
 use App\Model\Form;
 use App\Model\Master\Customer;
 use App\Model\Master\Warehouse;
 use App\Model\Sales\DeliveryOrder\DeliveryOrder;
+use App\Model\Sales\HistoryDeliveryNote\HistoryDeliveryNote;
 use App\Model\Sales\SalesInvoice\SalesInvoice;
 use App\Model\TransactionModel;
 use App\Traits\Model\Sales\DeliveryNoteJoin;
 use App\Traits\Model\Sales\DeliveryNoteRelation;
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
+/**
+ * @property int $id
+ * @property int $customer_id
+ * @property string $customer_name
+ * @property null|string $customer_address
+ * @property null|string $customer_phone
+ * @property null|string $billing_address
+ * @property null|string $billing_phone
+ * @property null|string $billing_email
+ * @property null|string $shipping_address
+ * @property null|string $shipping_phone
+ * @property null|string $shipping_email
+ * @property int $warehouse_id
+ * @property int $delivery_order_id
+ * @property null|string $driver
+ * @property null|string $license_plate
+ * 
+ * @property Customer $customer
+ * @property Form $form
+ * @property Collection<HistoryDeliveryNote> $histories
+ * @property Collection<DeliveryNoteItem> $items
+ * @property Collection<SalesInvoice> $salesInvoices
+ */
 class DeliveryNote extends TransactionModel
 {
     use DeliveryNoteJoin, DeliveryNoteRelation;
@@ -65,16 +92,22 @@ class DeliveryNote extends TransactionModel
         }
     }
 
+    /**
+     * @throws ModelNotFoundException
+     */
     public static function create($data)
     {
         $deliveryNote = new self;
         $deliveryNote->fill($data);
 
-        $deliveryOrder = DeliveryOrder::findOrFail($data['delivery_order_id']);
+        /** @var DeliveryOrder */
+        $deliveryOrder = DeliveryOrder::query()->findOrFail($data['delivery_order_id']);
         // TODO add check if $deliveryOrder is canceled / rejected / archived
 
         $deliveryNote->customer_id = $deliveryOrder->customer_id;
         $deliveryNote->customer_name = $deliveryOrder->customer_name;
+        $deliveryNote->customer_address = $deliveryOrder->customer_address;
+        $deliveryNote->customer_phone = $deliveryOrder->customer_phone;
         $deliveryNote->billing_address = $deliveryOrder->billing_address;
         $deliveryNote->billing_phone = $deliveryOrder->billing_phone;
         $deliveryNote->billing_email = $deliveryOrder->billing_email;

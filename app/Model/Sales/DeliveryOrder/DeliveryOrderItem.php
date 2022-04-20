@@ -7,6 +7,24 @@ use App\Model\Master\Item;
 use App\Model\Sales\DeliveryNote\DeliveryNoteItem;
 use App\Model\TransactionModel;
 
+/**
+ * @property int $id
+ * @property int $delivery_order_id
+ * @property null|int $sales_order_item_id
+ * @property int $item_id
+ * @property string $item_name
+ * @property float $quantity
+ * @property float $price
+ * @property null|float $discount_percent
+ * @property float $discount_value
+ * @property int $taxable
+ * @property string $unit
+ * @property float $converter
+ * @property null|string $notes
+ * @property null|int $allocation_id
+ * 
+ * @property Item $item
+ */
 class DeliveryOrderItem extends TransactionModel
 {
     protected $connection = 'tenant';

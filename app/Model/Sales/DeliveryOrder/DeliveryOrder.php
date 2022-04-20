@@ -4,10 +4,30 @@ namespace App\Model\Sales\DeliveryOrder;
 
 use App\Exceptions\IsReferencedException;
 use App\Model\Form;
+use App\Model\Master\Warehouse;
 use App\Model\TransactionModel;
 use App\Traits\Model\Sales\DeliveryOrderJoin;
 use App\Traits\Model\Sales\DeliveryOrderRelation;
+use Illuminate\Database\Eloquent\Collection;
 
+/**
+ * @property int $id
+ * @property int $customer_id
+ * @property int $warehouse_id
+ * @property null|int $sales_order_id
+ * @property string $customer_name
+ * @property null|string $customer_address
+ * @property null|string $customer_phone
+ * @property null|string $billing_address
+ * @property null|string $billing_phone
+ * @property null|string $billing_email
+ * @property null|string $shipping_address
+ * @property null|string $shipping_phone
+ * @property null|string $shipping_email
+ * 
+ * @property Collection<DeliveryOrderItem> $items
+ * @property Warehouse $warehouse
+ */
 class DeliveryOrder extends TransactionModel
 {
     use DeliveryOrderJoin, DeliveryOrderRelation;

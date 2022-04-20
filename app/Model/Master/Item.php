@@ -11,7 +11,35 @@ use App\Model\Inventory\OpeningStock\OpeningStockWarehouse;
 use App\Model\MasterModel;
 use App\Traits\Model\Master\ItemJoin;
 use App\Traits\Model\Master\ItemRelation;
+use Illuminate\Database\Eloquent\Collection;
 
+/**
+ * @property int $id
+ * @property null|int $chart_of_account_id
+ * @property null|string $code
+ * @property null|string $barcode
+ * @property string $name
+ * @property null|string $size
+ * @property null|string $color
+ * @property null|string $weight
+ * @property null|string $notes
+ * @property int $taxable
+ * @property int $require_production_number
+ * @property int $require_expiry_date
+ * @property float $stock
+ * @property float $stock_reminder
+ * @property null|int $unit_default
+ * @property null|int $unit_default_purchase
+ * @property null|int $unit_default_sales
+ * @property null|int $created_by
+ * @property null|int $updated_by
+ * @property null|int $archived_by
+ * @property null|string $created_at
+ * @property null|string $updated_at
+ * @property null|string $archived_at
+ * 
+ * @property Collection<ItemUnit> $units
+ */
 class Item extends MasterModel
 {
     use ItemJoin, ItemRelation;

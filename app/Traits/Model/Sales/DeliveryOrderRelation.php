@@ -8,6 +8,8 @@ use App\Model\Master\Warehouse;
 use App\Model\Sales\DeliveryOrder\DeliveryOrder;
 use App\Model\Sales\DeliveryOrder\DeliveryOrderItem;
 use App\Model\Sales\SalesOrder\SalesOrder;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\MorphOne;
 
 trait DeliveryOrderRelation
 {
@@ -22,11 +24,17 @@ trait DeliveryOrderRelation
         return $this->deliveryNotes()->notDone();
     }
 
+    /**
+     * @return MorphOne
+     */
     public function form()
     {
         return $this->morphOne(Form::class, 'formable');
     }
 
+    /**
+     * @return HasMany
+     */
     public function items()
     {
         return $this->hasMany(DeliveryOrderItem::class);

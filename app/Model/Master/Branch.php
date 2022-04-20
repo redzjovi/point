@@ -25,5 +25,7 @@ class Branch extends MasterModel
         'name',
         'address',
         'phone',
+        'created_by',
+        'updated_by',
     ];
 }

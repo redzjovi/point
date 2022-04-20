@@ -2,6 +2,8 @@
 
 use App\Model\SettingJournal;
 use Carbon\Carbon;
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Str;
 
 if (! function_exists('log_object')) {
@@ -66,9 +68,8 @@ if (! function_exists('pagination')) {
     /**
      * Paginate collection.
      *
-     * @param $query
-     * @param null $limit
-     * @return string
+     * @param Builder $query
+     * @param null|int $limit
      */
     function pagination($query, $limit = null)
     {

@@ -8,8 +8,24 @@ use App\Model\Sales\SalesDownPayment\SalesDownPayment;
 use App\Model\Sales\SalesOrder\SalesOrder;
 use App\Model\TransactionModel;
 
+/**
+ * @property int $id
+ * @property int $customer_id
+ * @property string $customer_name
+ * @property int $cash_only
+ * @property float $need_down_payment
+ * @property null|float $discount_percent
+ * @property float $discount_value
+ * @property string $type_of_tax
+ * @property float $tax
+ * @property float $amount
+ */
 class SalesContract extends TransactionModel
 {
+    const TYPE_OF_TAX_EXCLUDE = 'exclude';
+    const TYPE_OF_TAX_NON = 'non';
+    const TYPE_OF_TAX_INCLUDE = 'include';
+
     public static $morphName = 'SalesContract';
 
     protected $connection = 'tenant';

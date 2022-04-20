@@ -14,7 +14,32 @@ use App\Model\Purchase\PurchaseOrder\PurchaseOrder;
 use App\Model\TransactionModel;
 use App\Traits\Model\Purchase\PurchaseReceiveJoin;
 use App\Traits\Model\Purchase\PurchaseReceiveRelation;
+use Illuminate\Database\Eloquent\Collection;
 
+/**
+ * @property int $id
+ * @property int $supplier_id
+ * @property string $supplier_name
+ * @property null|string $supplier_address
+ * @property null|string $supplier_phone
+ * @property null|string $billing_address
+ * @property null|string $billing_phone
+ * @property null|string $billing_email
+ * @property null|string $shipping_address
+ * @property null|string $shipping_phone
+ * @property null|string $shipping_email
+ * @property int $warehouse_id
+ * @property string $warehouse_name
+ * @property null|int $purchase_order_id
+ * @property null|string $driver
+ * @property null|string $license_plate
+ * 
+ * @property Form $form
+ * @property Collection<PurchaseReceiveItem> $items
+ * @property PurchaseOrder $purchaseOrder
+ * @property Supplier $supplier
+ * @property Warehouse $warehouse
+ */
 class PurchaseReceive extends TransactionModel
 {
     use PurchaseReceiveJoin, PurchaseReceiveRelation;

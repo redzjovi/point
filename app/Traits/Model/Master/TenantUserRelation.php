@@ -5,6 +5,7 @@ namespace App\Traits\Model\Master;
 use App\Model\HumanResource\Employee\Employee;
 use App\Model\Master\Branch;
 use App\Model\Master\Warehouse;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 trait TenantUserRelation
 {
@@ -26,6 +27,7 @@ trait TenantUserRelation
 
     /**
      * The branches that belong to the user.
+     * @return BelongsToMany
      */
     public function branches()
     {

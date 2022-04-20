@@ -72,7 +72,10 @@ class WarehouseTest extends TestCase
         /** @var Collection<Warehouse> */
         $warehouses = factory(Warehouse::class, 2)->create();
 
-        $response = $this->json('GET', $this->url, [], [$this->headers]);
+        $response = $this->json('GET', $this->url, [
+            'sort_by' => '-warehouse.created_at',
+            'limit' => 10,
+        ], [$this->headers]);
 
         $response->assertStatus(200);
 

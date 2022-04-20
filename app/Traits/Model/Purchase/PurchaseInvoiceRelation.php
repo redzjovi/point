@@ -7,14 +7,22 @@ use App\Model\Form;
 use App\Model\Master\Supplier;
 use App\Model\Purchase\PurchaseDownPayment\PurchaseDownPayment;
 use App\Model\Purchase\PurchaseInvoice\PurchaseInvoiceItem;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\MorphOne;
 
 trait PurchaseInvoiceRelation
 {
+    /**
+     * @return MorphOne
+     */
     public function form()
     {
         return $this->morphOne(Form::class, 'formable');
     }
 
+    /**
+     * @return HasMany
+     */
     public function items()
     {
         return $this->hasMany(PurchaseInvoiceItem::class);

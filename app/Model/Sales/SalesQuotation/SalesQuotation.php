@@ -10,6 +10,16 @@ use App\Model\TransactionModel;
 use App\Traits\Model\Sales\SalesQuotationJoin;
 use App\Traits\Model\Sales\SalesQuotationRelation;
 
+/**
+ * @property int $id
+ * @property null|int $customer_id
+ * @property string $customer_name
+ * @property null|string $customer_address
+ * @property null|string $customer_phone
+ * @property null|float $discount_percent
+ * @property float $discount_value
+ * @property float $amount
+ */
 class SalesQuotation extends TransactionModel
 {
     use SalesQuotationJoin, SalesQuotationRelation;

@@ -11,6 +11,39 @@ use App\Model\Master\Customer;
 use App\Model\Master\Supplier;
 use App\Model\Master\User;
 
+/**
+ * @property int $id
+ * @property null|int $branch_id
+ * @property string $date
+ * @property null|string $number
+ * @property null|string $edited_number
+ * @property null|string $edited_notes
+ * @property null|string $notes
+ * @property int $created_by
+ * @property int $updated_by
+ * @property int $done
+ * @property int $increment
+ * @property int $increment_group
+ * @property int $formable_id
+ * @property string $formable_type
+ * @property null|int $request_approval_to
+ * @property null|int $approval_by
+ * @property null|string $approval_at
+ * @property null|string $approval_reason
+ * @property int $approval_status
+ * @property null|int $request_cancellation_to
+ * @property null|int $request_cancellation_by
+ * @property null|string $request_cancellation_at
+ * @property null|string $request_cancellation_reason
+ * @property null|int $cancellation_approval_at
+ * @property null|string $cancellation_approval_by
+ * @property null|string $cancellation_approval_reason
+ * @property int $cancellation_status
+ * @property null|string $created_at
+ * @property null|string $updated_at
+ * 
+ * @property Customer $customer
+ */
 class Form extends PointModel
 {
     protected $connection = 'tenant';
@@ -21,8 +54,15 @@ class Form extends PointModel
 
     protected $fillable = [
         'date',
+        'number',
         'notes',
-        'increment_group',
+        'done',
+        'increment_group', 
+        'approval_by',
+        'approval_at',
+        'approval_reason',
+        'approval_status',
+        'cancellation_status',
     ];
 
     public function save(array $options = [])

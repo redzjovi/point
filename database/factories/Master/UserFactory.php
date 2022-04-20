@@ -1,5 +1,7 @@
 <?php
 
+use App\Model\Master\User;
+use App\User as AppUser;
 use Faker\Generator as Faker;
 
 /*
@@ -12,14 +14,45 @@ use Faker\Generator as Faker;
 | model instances for testing / seeding your application's database.
 |
 */
-
-$factory->define(App\Model\Master\User::class, function (Faker $faker) {
+/** @var Factory $factory */
+$factory->define(User::class, function (Faker $faker) {
     return [
-        'name' => $faker->name,
-        'first_name' => $faker->firstName,
-        'last_name' => $faker->lastName,
-        'address' => $faker->address,
-        'phone' => $faker->e164PhoneNumber,
-        'email' => $faker->unique()->safeEmail,
+        'id' => factory(AppUser::class),
+        'name' => function (array $user) {
+            /** @var AppUser */
+            $appUser = AppUser::query()->find($user['id']);
+
+            return $appUser->name;
+        },
+        'first_name' => function (array $user) {
+            /** @var AppUser */
+            $appUser = AppUser::query()->find($user['id']);
+
+            return $appUser->first_name;
+        },
+        'last_name' => function (array $user) {
+            /** @var AppUser */
+            $appUser = AppUser::query()->find($user['id']);
+
+            return $appUser->last_name;
+        },
+        'address' => function (array $user) {
+            /** @var AppUser */
+            $appUser = AppUser::query()->find($user['id']);
+
+            return $appUser->address;
+        },
+        'phone' => function (array $user) {
+            /** @var AppUser */
+            $appUser = AppUser::query()->find($user['id']);
+
+            return $appUser->phone;
+        },
+        'email' => function (array $user) {
+            /** @var AppUser */
+            $appUser = AppUser::query()->find($user['id']);
+
+            return $appUser->email;
+        },
     ];
 });
